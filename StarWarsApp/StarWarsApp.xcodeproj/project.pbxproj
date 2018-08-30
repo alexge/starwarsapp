@@ -15,6 +15,8 @@
 		C140C75E2137E19100712D1E /* StarWarsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C75D2137E19100712D1E /* StarWarsAppTests.swift */; };
 		C140C7692137E19100712D1E /* StarWarsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C7682137E19100712D1E /* StarWarsAppUITests.swift */; };
 		C140C7772138246600712D1E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C7762138246600712D1E /* HomeViewController.swift */; };
+		C140C7792138674C00712D1E /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C7782138674C00712D1E /* Film.swift */; };
+		C140C77B21387FD000712D1E /* FilmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140C77A21387FD000712D1E /* FilmDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		C140C7682137E19100712D1E /* StarWarsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAppUITests.swift; sourceTree = "<group>"; };
 		C140C76A2137E19100712D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C140C7762138246600712D1E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C140C7782138674C00712D1E /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		C140C77A21387FD000712D1E /* FilmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +107,11 @@
 				C140C74A2137E18F00712D1E /* ViewController.swift */,
 				C140C74C2137E18F00712D1E /* Main.storyboard */,
 				C140C74F2137E19100712D1E /* Assets.xcassets */,
+				C140C77A21387FD000712D1E /* FilmDetailViewController.swift */,
 				C140C7512137E19100712D1E /* LaunchScreen.storyboard */,
 				C140C7542137E19100712D1E /* Info.plist */,
 				C140C7762138246600712D1E /* HomeViewController.swift */,
+				C140C7782138674C00712D1E /* Film.swift */,
 			);
 			path = StarWarsApp;
 			sourceTree = "<group>";
@@ -260,6 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C140C74B2137E18F00712D1E /* ViewController.swift in Sources */,
+				C140C7792138674C00712D1E /* Film.swift in Sources */,
+				C140C77B21387FD000712D1E /* FilmDetailViewController.swift in Sources */,
 				C140C7492137E18F00712D1E /* AppDelegate.swift in Sources */,
 				C140C7772138246600712D1E /* HomeViewController.swift in Sources */,
 			);

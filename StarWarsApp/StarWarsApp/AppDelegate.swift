@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.makeKeyAndVisible()
         
         let rootViewNavController = UINavigationController(rootViewController: HomeViewController())
-        
+        rootViewNavController.navigationBar.isTranslucent = false
         
         window.rootViewController = rootViewNavController
         
