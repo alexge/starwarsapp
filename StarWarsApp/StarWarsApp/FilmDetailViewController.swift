@@ -18,33 +18,33 @@ class FilmDetailViewController: UIViewController {
         return df
     }()
     
-    var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
-    var releaseLabel: UILabel = {
+    private var releaseLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
-    var charactersTitle: UILabel = {
+    private var charactersTitle: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         l.text = "Characters"
         return l
     }()
     
-    var charactersLabel: UILabel = {
+    private var charactersLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         l.numberOfLines = 0
         return l
     }()
     
-    var infoStackView: UIStackView = {
+    private var infoStackView: UIStackView = {
         let sv = UIStackView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.axis = .vertical
@@ -52,7 +52,7 @@ class FilmDetailViewController: UIViewController {
         return sv
     }()
     
-    var crawlingText: UILabel = {
+    private var crawlingText: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         l.numberOfLines = 0
@@ -61,9 +61,9 @@ class FilmDetailViewController: UIViewController {
         return l
     }()
     
-    var crawlingTextTopConstraint: NSLayoutConstraint?
+    private var crawlingTextTopConstraint: NSLayoutConstraint?
     
-    var crawlingView: UIView = {
+    private var crawlingView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.heightAnchor.constraint(equalToConstant: 200).isActive = true
@@ -118,12 +118,11 @@ class FilmDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func crawlText() {
+    private func crawlText() {
         view.layoutIfNeeded()
         UIView.animate(withDuration: 20, delay: 0, options: .curveLinear, animations: {
             self.crawlingTextTopConstraint?.constant = -self.crawlingText.bounds.height - 200
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-    
 }

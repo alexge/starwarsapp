@@ -17,7 +17,7 @@ class LoadingViewController: UIViewController {
     weak var delegate: LoadingViewControllerDelegate?
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var timer = Timer()
+    private var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class LoadingViewController: UIViewController {
         }
     }
     
-    func runTimer() {
+    private func runTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
             self.activityIndicator.startAnimating()
             self.activityIndicator.isHidden = false

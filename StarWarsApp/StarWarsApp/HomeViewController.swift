@@ -11,9 +11,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var films: [Film]
+    private var films: [Film]
     
-    var tableView: UITableView = {
+    private var tableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(FilmTableViewCell.self, forCellReuseIdentifier: FilmTableViewCell.reuseIdentifier)
@@ -43,10 +43,6 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(FilmDetailViewController(film: films[indexPath.row]), animated: true)
     }
@@ -64,11 +60,11 @@ extension HomeViewController: UITableViewDataSource {
     }
 }
 
-class FilmTableViewCell: UITableViewCell {
+private class FilmTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = "FilmTableViewCell"
     
-    var contentStackView: UIStackView = {
+    private var contentStackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .horizontal
         sv.alignment = .leading
@@ -77,7 +73,7 @@ class FilmTableViewCell: UITableViewCell {
         return sv
     }()
     
-    var posterView: UIImageView = {
+    private var posterView: UIImageView = {
         let pv = UIImageView()
         pv.translatesAutoresizingMaskIntoConstraints = false
         pv.widthAnchor.constraint(equalToConstant: 150).isActive = true
@@ -86,7 +82,7 @@ class FilmTableViewCell: UITableViewCell {
         return pv
     }()
     
-    var infoStackView: UIStackView = {
+    private var infoStackView: UIStackView = {
         let sv = UIStackView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.axis = .vertical
@@ -95,32 +91,32 @@ class FilmTableViewCell: UITableViewCell {
         return sv
     }()
     
-    var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
-    var releaseLabel: UILabel = {
+    private var releaseLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
-    var directorTitleLabel: UILabel = {
+    private var directorTitleLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         l.text = "Directed by"
         return l
     }()
     
-    var directorsLabel: UILabel = {
+    private var directorsLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
-    var directorStackView: UIStackView = {
+    private var directorStackView: UIStackView = {
         let sv = UIStackView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.axis = .vertical
@@ -129,20 +125,20 @@ class FilmTableViewCell: UITableViewCell {
         return sv
     }()
     
-    var producerTitleLabel: UILabel = {
+    private var producerTitleLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         l.text = "Produced by"
         return l
     }()
     
-    var producersLabel: UILabel = {
+    private var producersLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
-    var producerStackView: UIStackView = {
+    private var producerStackView: UIStackView = {
         let sv = UIStackView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.axis = .vertical
