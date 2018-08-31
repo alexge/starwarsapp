@@ -55,7 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: LoadingViewControllerDelegate {
     func loadingViewControllerDidFinishLoading(films: [Film]) {
-        let rootViewNavController = UINavigationController(rootViewController: HomeViewController(films: films))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let sortedFilms = films.sorted(by: { dateFormatter.date(from: $0.releaseDate)! < dateFormatter.date(from: $1.releaseDate)! })
+        
+        let rootViewNavController = UINavigationController(rootViewController: HomeViewController(films: sortedFilms))
         rootViewNavController.navigationBar.isTranslucent = false
         
         window?.rootViewController = rootViewNavController

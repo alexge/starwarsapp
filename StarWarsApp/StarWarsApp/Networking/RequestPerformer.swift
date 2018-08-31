@@ -32,9 +32,6 @@ class RequestPerformer {
                         if let characters = characters {
                             films.append(Film(title: title, releaseDate: releaseDate, characters: characters, poster: UIImage(), directors: director, producers: producer, crawlingText: openingCrawl))
                             if films.count == filmResponses.count {
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "yyyy-MM-dd"
-                                films.sort(by: { dateFormatter.date(from: $0.releaseDate)! < dateFormatter.date(from: $1.releaseDate)! })
                                 completion(films)
                             }
                         } else {
