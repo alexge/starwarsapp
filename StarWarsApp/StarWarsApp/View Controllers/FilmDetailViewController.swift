@@ -10,13 +10,6 @@ import Foundation
 import UIKit
 
 class FilmDetailViewController: UIViewController {
-        
-    private var dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateStyle = .medium
-        df.dateFormat = "MMMM d, yyyy"
-        return df
-    }()
     
     private var titleLabel: UILabel = {
         let l = UILabel()
@@ -57,7 +50,6 @@ class FilmDetailViewController: UIViewController {
         l.translatesAutoresizingMaskIntoConstraints = false
         l.numberOfLines = 0
         l.textAlignment = .center
-        
         return l
     }()
     
@@ -68,6 +60,7 @@ class FilmDetailViewController: UIViewController {
         v.translatesAutoresizingMaskIntoConstraints = false
         v.heightAnchor.constraint(equalToConstant: 200).isActive = true
         v.clipsToBounds = true
+        // perspective transform for opening sequence effect
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / 500.0
         transform = CATransform3DRotate(transform, -CGFloat(45 * Double.pi / 180), 1, 0, 0)
@@ -79,19 +72,34 @@ class FilmDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
+        view.addSubview(infoStackView)
+        view.addSubview(crawlingView)
+
+        configureInfoStackView()
+        configureCrawlingTextView()
         
+        titleLabel.text = film.title
+        releaseLabel.text = film.releaseDate
+        charactersLabel.text = film.characterString()
+        crawlingText.text = film.crawlingText
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureInfoStackView() {
         infoStackView.addArrangedSubview(titleLabel)
         infoStackView.addArrangedSubview(releaseLabel)
         infoStackView.addArrangedSubview(charactersTitle)
         infoStackView.addArrangedSubview(charactersLabel)
         
-        view.addSubview(infoStackView)
-        view.addSubview(crawlingView)
-
         infoStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         infoStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         infoStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        
+    }
+    
+    private func configureCrawlingTextView() {
         crawlingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         crawlingView.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 20).isActive = true
         crawlingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
@@ -101,21 +109,11 @@ class FilmDetailViewController: UIViewController {
         crawlingTextTopConstraint?.isActive = true
         crawlingText.leadingAnchor.constraint(equalTo: crawlingView.leadingAnchor).isActive = true
         crawlingText.trailingAnchor.constraint(equalTo: crawlingView.trailingAnchor).isActive = true
-        
-        titleLabel.text = film.title
-        releaseLabel.text = film.releaseDate
-        charactersLabel.text = film.characterString()
-        crawlingText.text = film.crawlingText
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         crawlText()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func crawlText() {

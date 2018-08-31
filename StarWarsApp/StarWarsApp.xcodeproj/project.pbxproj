@@ -19,6 +19,7 @@
 		C1B600E72138A187001AA64A /* RequestPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B600E62138A187001AA64A /* RequestPerformer.swift */; };
 		C1B600E92138CA8E001AA64A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B600E82138CA8E001AA64A /* LoadingViewController.swift */; };
 		C1B600EB2138CAFB001AA64A /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1B600EA2138CAFB001AA64A /* LoadingViewController.storyboard */; };
+		C1B600ED2139359A001AA64A /* FilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B600EC2139359A001AA64A /* FilmTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		C1B600E62138A187001AA64A /* RequestPerformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPerformer.swift; sourceTree = "<group>"; };
 		C1B600E82138CA8E001AA64A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		C1B600EA2138CAFB001AA64A /* LoadingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
+		C1B600EC2139359A001AA64A /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,16 +114,14 @@
 		C140C7472137E18F00712D1E /* StarWarsApp */ = {
 			isa = PBXGroup;
 			children = (
-				C140C7482137E18F00712D1E /* AppDelegate.swift */,
-				C1B600E82138CA8E001AA64A /* LoadingViewController.swift */,
-				C1B600EA2138CAFB001AA64A /* LoadingViewController.storyboard */,
+				C1B600F22139369D001AA64A /* Coordinators */,
+				C1B600EE2139363B001AA64A /* Models */,
+				C1B600EF2139364C001AA64A /* Home */,
+				C1B600F02139366F001AA64A /* View Controllers */,
+				C1B600F121393693001AA64A /* Networking */,
 				C140C74F2137E19100712D1E /* Assets.xcassets */,
-				C140C77A21387FD000712D1E /* FilmDetailViewController.swift */,
 				C140C7512137E19100712D1E /* LaunchScreen.storyboard */,
 				C140C7542137E19100712D1E /* Info.plist */,
-				C140C7762138246600712D1E /* HomeViewController.swift */,
-				C140C7782138674C00712D1E /* Film.swift */,
-				C1B600E62138A187001AA64A /* RequestPerformer.swift */,
 			);
 			path = StarWarsApp;
 			sourceTree = "<group>";
@@ -142,6 +142,49 @@
 				C140C76A2137E19100712D1E /* Info.plist */,
 			);
 			path = StarWarsAppUITests;
+			sourceTree = "<group>";
+		};
+		C1B600EE2139363B001AA64A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C140C7782138674C00712D1E /* Film.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C1B600EF2139364C001AA64A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C140C7762138246600712D1E /* HomeViewController.swift */,
+				C1B600EC2139359A001AA64A /* FilmTableViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C1B600F02139366F001AA64A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C1B600E82138CA8E001AA64A /* LoadingViewController.swift */,
+				C1B600EA2138CAFB001AA64A /* LoadingViewController.storyboard */,
+				C140C77A21387FD000712D1E /* FilmDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C1B600F121393693001AA64A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C1B600E62138A187001AA64A /* RequestPerformer.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		C1B600F22139369D001AA64A /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				C140C7482137E18F00712D1E /* AppDelegate.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		D36D27FCADB4C313596614E2 /* Frameworks */ = {
@@ -333,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1B600ED2139359A001AA64A /* FilmTableViewCell.swift in Sources */,
 				C140C7792138674C00712D1E /* Film.swift in Sources */,
 				C140C77B21387FD000712D1E /* FilmDetailViewController.swift in Sources */,
 				C140C7492137E18F00712D1E /* AppDelegate.swift in Sources */,

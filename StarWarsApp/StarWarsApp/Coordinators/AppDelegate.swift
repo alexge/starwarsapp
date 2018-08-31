@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow()
         self.window = window
         
+        // Show a duplicate of the loading screen on launch to perform all network requests before taking the user to the home page
         let storyboard = UIStoryboard(name: "LoadingViewController", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as! LoadingViewController
         controller.delegate = self
@@ -50,8 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
 extension AppDelegate: LoadingViewControllerDelegate {

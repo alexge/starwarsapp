@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 class RequestPerformer {
+    // would have been cleaner to create a Result type that was an enum with associated values to handle the JSON parsing
     func downloadAllFilms(completion: @escaping ([Film]?) -> Void) {
         
         var films = [Film]()
@@ -19,13 +20,7 @@ class RequestPerformer {
             return
         }
         Alamofire.request(url,method: .get).validate().responseJSON { response in
-            guard response.result.isSuccess, let value = response.result.value as? [String:Any] else {
-                print("Error while fetching films")
-                completion(nil)
-                return
-            }
-            
-            guard let filmResponses = value["results"] as? [[String:Any]] else {
+            guard response.result.isSuccess, let value = response.result.value as? [String:Any], let filmResponses = value["results"] as? [[String:Any]] else {
                 print("Error while fetching films")
                 completion(nil)
                 return
@@ -66,20 +61,14 @@ class RequestPerformer {
                 return
             }
             Alamofire.request(url, method: .get).validate().responseJSON { response in
-                guard response.result.isSuccess, let value = response.result.value as? [String:Any] else {
+                guard response.result.isSuccess, let value = response.result.value as? [String:Any], let name = value["name"] as? String else {
                     print("Error while fetching characters")
                     completion(nil)
                     return
                 }
-                if let name = value["name"] as? String {
-                    names.append(name)
-                    if names.count == characterURLs.count {
-                        completion(names)
-                    }
-                } else {
-                    print("Error while fetching characters")
-                    completion(nil)
-                    return
+                names.append(name)
+                if names.count == characterURLs.count {
+                    completion(names)
                 }
             }
         }

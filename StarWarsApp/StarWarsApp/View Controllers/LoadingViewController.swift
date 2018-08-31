@@ -21,7 +21,8 @@ class LoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // at first hide the spinner
+        // if still loading after 2 seconds, show spinner
         activityIndicator.isHidden = true
         runTimer()
         
