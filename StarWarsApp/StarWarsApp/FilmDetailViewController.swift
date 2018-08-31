@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 class FilmDetailViewController: UIViewController {
-    
-    static let film = Film(title: "YES", releaseDate: Date(), characters: ["Han Solo", "Luke Skywalker"], poster: UIImage(named: "puppy2")!, directors: ["George Lucas"], producers: ["Cohen bros"], crawlingText: "It is a period of civil war.\n\nRebel spaceships, striking\n\nfrom a hidden base, have won\n\ntheir first victory against\n\nthe evil Galactic Empire.\n\n\n\nDuring the battle, Rebel\n\nspies managed to steal secret\r\nplans to the Empire's\n\nultimate weapon, the DEATH\n\nSTAR, an armored space\n\nstation with enough power\n\nto destroy an entire planet.\n\n\n\nPursued by the Empire's\n\nsinister agents, Princess\n\nLeia races home aboard her\n\nstarship, custodian of the\n\nstolen plans that can save her\n\npeople and restore\n\nfreedom to the galaxy....")
-    
+        
     private var dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
@@ -59,6 +57,7 @@ class FilmDetailViewController: UIViewController {
         l.translatesAutoresizingMaskIntoConstraints = false
         l.numberOfLines = 0
         l.textAlignment = .center
+        
         return l
     }()
     
@@ -69,6 +68,10 @@ class FilmDetailViewController: UIViewController {
         v.translatesAutoresizingMaskIntoConstraints = false
         v.heightAnchor.constraint(equalToConstant: 200).isActive = true
         v.clipsToBounds = true
+        var transform = CATransform3DIdentity
+        transform.m34 = 1.0 / 500.0
+        transform = CATransform3DRotate(transform, -CGFloat(45 * Double.pi / 180), 1, 0, 0)
+        v.layer.transform = transform
         return v
     }()
     
@@ -100,8 +103,7 @@ class FilmDetailViewController: UIViewController {
         crawlingText.trailingAnchor.constraint(equalTo: crawlingView.trailingAnchor).isActive = true
         
         titleLabel.text = film.title
-        let dateString = dateFormatter.string(from: film.releaseDate)
-        releaseLabel.text = dateString
+        releaseLabel.text = film.releaseDate
         charactersLabel.text = film.characterString()
         crawlingText.text = film.crawlingText
     }

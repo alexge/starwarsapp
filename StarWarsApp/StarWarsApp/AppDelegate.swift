@@ -13,20 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
         // Setup Window
         let window = UIWindow()
         self.window = window
         
-        window.backgroundColor = UIColor.darkGray
+        let storyboard = UIStoryboard(name: "LoadingViewController", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as! LoadingViewController
+        controller.delegate = self
+        
+        window.rootViewController = controller
         window.makeKeyAndVisible()
-        
-        let rootViewNavController = UINavigationController(rootViewController: HomeViewController())
-        rootViewNavController.navigationBar.isTranslucent = false
-        
-        window.rootViewController = rootViewNavController
         
         // Override point for customization after application launch.
         return true
@@ -55,5 +52,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate: LoadingViewControllerDelegate {
+    func loadingViewControllerDidFinishLoading(films: [Film]) {
+        let rootViewNavController = UINavigationController(rootViewController: HomeViewController(films: films))
+        rootViewNavController.navigationBar.isTranslucent = false
+        
+        window?.rootViewController = rootViewNavController
+    }
 }
 

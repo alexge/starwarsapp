@@ -11,6 +11,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    var films: [Film]
+    
     var tableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -18,14 +20,8 @@ class HomeViewController: UIViewController {
         return tv
     }()
     
-    private var dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateStyle = .medium
-        df.dateFormat = "MMMM d, yyyy"
-        return df
-    }()
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(films: [Film]) {
+        self.films = films
         super.init(nibName: nil, bundle: nil)
         title = "Films"
         configureTableView()
@@ -52,20 +48,18 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(FilmDetailViewController(film: FilmDetailViewController.film), animated: true)
-//        present(FilmDetailViewController(film: FilmDetailViewController.film), animated: true, completion: nil)
+        navigationController?.pushViewController(FilmDetailViewController(film: films[indexPath.row]), animated: true)
     }
 }
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return films.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilmTableViewCell.reuseIdentifier) as! FilmTableViewCell
-        let film = Film(title: "YES", releaseDate: Date(), characters: ["Han Solo", "Luke Skywalker"], poster: UIImage(named: "puppy2")!, directors: ["George Lucas"], producers: ["Cohen bros"], crawlingText: "hi")
-        cell.bind(film: film, dateFormatter: dateFormatter)
+        cell.bind(film: films[indexPath.row])
         return cell
     }
 }
@@ -196,13 +190,12 @@ class FilmTableViewCell: UITableViewCell {
         producersLabel.text = nil
     }
     
-    func bind(film: Film, dateFormatter: DateFormatter) {
+    func bind(film: Film) {
         posterView.image = film.poster
         titleLabel.text = film.title
-        let dateString = dateFormatter.string(from: film.releaseDate)
-        releaseLabel.text = dateString
-        directorsLabel.text = film.directorString()
-        producersLabel.text = film.producerString()
+        releaseLabel.text = film.releaseDate
+        directorsLabel.text = film.directors
+        producersLabel.text = film.producers
     }
     
 }
